@@ -1,1 +1,1 @@
-include ':app', ':adsdk', ':adsdk', ':http', ':dragger', ':ui', ':library'
+include ':app', ':adsdk', ':adsdk', ':http', ':dragger', ':ui', ':library', ':downloadlibrary'
