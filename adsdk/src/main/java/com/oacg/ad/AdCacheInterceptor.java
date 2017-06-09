@@ -2,7 +2,7 @@ package com.oacg.ad;
 
 import com.oacg.networkrequest.CacheInterceptor;
 
-import east2d.com.tool.NetworkUtils;
+import east2d.com.tool.NetworkUtil;
 
 /**
  * 广告请求缓存拦截器
@@ -12,7 +12,7 @@ import east2d.com.tool.NetworkUtils;
 public class AdCacheInterceptor extends CacheInterceptor {
     @Override
     protected boolean isNetworkConnected() {
-        return NetworkUtils.isConnected(AdSDK.get().getContext());
+        return NetworkUtil.isConnected(AdSDK.get().getContext());
     }
 
     @Override

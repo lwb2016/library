@@ -19,9 +19,9 @@ import java.util.concurrent.Future;
  * Created by KingWin on 2016/9/30.
  * 网络相关工具类
  */
-public class NetworkUtils {
+public class NetworkUtil {
 
-    private NetworkUtils() {
+    private NetworkUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
