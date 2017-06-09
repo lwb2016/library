@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<east2d.com.myapplication.view.ScrollViewGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_scroll_demo"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF0000"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="1111111111111"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFF00"
+        android:layout_marginTop="10dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#FF00FF"
+        android:layout_marginTop="20dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="test"
+            android:gravity="center"/>
+    </FrameLayout>
+
+</east2d.com.myapplication.view.ScrollViewGroup>

@@ -1,0 +1,26 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="#FFFFFF" >
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/backtwotou"
+        android:padding="9dp" />
+
+    <TextView
+        android:id="@+id/tv_titlename"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:lines="1"
+        android:ellipsize="end"
+        android:paddingRight="48dp"
+        android:paddingLeft="48dp"/>
+
+</FrameLayout>

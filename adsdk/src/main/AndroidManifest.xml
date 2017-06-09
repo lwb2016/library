@@ -1,0 +1,44 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="east2d.com.adsdk">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        >
+
+        <activity android:name="com.oacg.h5.FullWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name="com.oacg.h5.TitleWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name="com.oacg.h5.GameFullWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name="com.oacg.h5.GameTitleWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+
+        <service android:name="com.oacg.service.ApkDownloadService" android:exported="false"></service>
+        <service android:name="com.oacg.service.FileDownloadService" android:exported="false"></service>
+        <service android:name="com.oacg.service.DownLoadIntentService" android:exported="false">
+            <intent-filter >
+                <action android:name="intentservice.action.ACTION_DOWNLOAD_SERVICE"></action>
+            </intent-filter>
+        </service>
+
+        <service android:name="com.oacg.service.DownloadNotificationService" android:exported="false"></service>
+        <receiver android:name="com.oacg.service.AppInstallReceiver" android:exported="false">
+            <intent-filter android:priority="2147483647">
+                <action android:name="com.oacg.receiver.ACTION_DOWNLOAD_INSTALL"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.oacg.service.AppInstallCompleteReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+
+</manifest>

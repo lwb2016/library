@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="east2d.com.myapplication">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <application
+        android:name=".demo.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+        <activity
+            android:name="com.tencent.smtt.sdk.VideoActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.tencent.smtt.tbs.video.PLAY"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.oacg.service.LoadX5Service"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <activity android:name=".demo.ViewPagerUi"/>
+        <activity
+            android:name=".demo.XRecycleViewDemoUi"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <!-- 下载管理的需要 -->
+        <activity android:name=".demo.SDDemoUi"/>
+
+        <!-- 广告所需要 -->
+        <activity
+            android:name=".demo.MainUi"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".demo.SplashAdUi"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".demo.PlugAdUi"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <meta-data
+            android:name="com.oacg.imageloader.GlideModuleConfig"
+            android:value="GlideModule"/>
+
+        <activity android:name=".demo.ParentActivity">
+        </activity>
+        <activity android:name=".gl.MainActivity">
+        </activity>
+        <activity android:name=".demo.PemissionUi">
+        </activity>
+        <activity android:name=".demo.ScrollDemo">
+        </activity>
+        <activity android:name=".demo.SmoothDemo">
+        </activity>
+        <activity android:name=".demo.SmoothDemo2">
+        </activity>
+        <activity android:name=".demo.ClipDemo3">
+        </activity>
+        <activity android:name=".demo.ClipGridDemo3">
+        </activity>
+
+        <!--广告-->
+        <activity android:name="com.oacg.h5.FullWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name="com.oacg.h5.TitleWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name="com.oacg.h5.GameFullWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <activity android:name="com.oacg.h5.GameTitleWebUi"
+                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+
+        <service android:name="com.oacg.service.ApkDownloadService" android:exported="false"></service>
+        <service android:name="com.oacg.service.FileDownloadService" android:exported="false"></service>
+        <service android:name="com.oacg.service.DownLoadIntentService" android:exported="false">
+            <intent-filter >
+                <action android:name="intentservice.action.ACTION_DOWNLOAD_SERVICE"></action>
+            </intent-filter>
+        </service>
+
+        <service android:name="com.oacg.service.DownloadNotificationService" android:exported="false"></service>
+        <receiver android:name="com.oacg.service.AppInstallReceiver" android:exported="false">
+            <intent-filter android:priority="2147483647">
+                <action android:name="com.oacg.receiver.ACTION_DOWNLOAD_INSTALL"></action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.oacg.service.AppInstallCompleteReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

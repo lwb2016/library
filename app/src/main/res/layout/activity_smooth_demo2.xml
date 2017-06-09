@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_smooth_demo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <east2d.com.myapplication.clip.ClipRecycleView
+        android:id="@+id/crv_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <!--east2d.com.myapplication.view.ScrollLinearLayout
+        android:id="@+id/smooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            >
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/colorAccent"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/tv_text"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/colorPrimary"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ff0000"
+            android:visibility="gone"
+            />
+    </east2d.com.myapplication.view.ScrollLinearLayout-->
+
+</android.support.design.widget.CoordinatorLayout>
