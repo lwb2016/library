@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.FrameLayout;
 
-import east2d.com.tool.ResUtils;
+import top.libbase.tool.ResUtils;
 
 /**
  * Created by leo on 2017/4/25.

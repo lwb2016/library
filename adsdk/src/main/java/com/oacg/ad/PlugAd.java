@@ -1,6 +1,7 @@
 package com.oacg.ad;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.request.target.Target;
 
 /**
@@ -88,19 +91,19 @@ public class PlugAd extends BaseAdView {
         //加载图片
         Glide.with(mContext).fromString()
                 .load(url)
-                .listener(new RequestListener<String, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
-                        loadError();
-                        return false;
-                    }
+                .into(new GlideDrawableImageViewTarget(mImageView){
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
+                super.onResourceReady(resource, animation);
+                loadComplete();
+            }
 
-                    @Override
-                    public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
-                        loadComplete();
-                        return false;
-                    }
-                }).into(mImageView);
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                super.onLoadFailed(e, errorDrawable);
+                loadError();
+            }
+        });
     }
 
     private void setListener() {

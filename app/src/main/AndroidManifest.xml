@@ -94,38 +94,59 @@
         <activity android:name=".demo.ClipGridDemo3">
         </activity>
 
-        <!--广告-->
-        <activity android:name="com.oacg.h5.FullWebUi"
-                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
-        <activity android:name="com.oacg.h5.TitleWebUi"
-                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
-        <activity android:name="com.oacg.h5.GameFullWebUi"
-                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
-        <activity android:name="com.oacg.h5.GameTitleWebUi"
-                  android:configChanges="orientation|screenSize|keyboardHidden"></activity>
+        <!-- 广告 -->
+        <activity
+            android:name="com.oacg.h5.FullWebUi"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name="com.oacg.h5.TitleWebUi"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name="com.oacg.h5.GameFullWebUi"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
+        <activity
+            android:name="com.oacg.h5.GameTitleWebUi"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
 
-        <service android:name="com.oacg.service.ApkDownloadService" android:exported="false"></service>
-        <service android:name="com.oacg.service.FileDownloadService" android:exported="false"></service>
-        <service android:name="com.oacg.service.DownLoadIntentService" android:exported="false">
-            <intent-filter >
-                <action android:name="intentservice.action.ACTION_DOWNLOAD_SERVICE"></action>
+        <service
+            android:name="com.oacg.service.ApkDownloadService"
+            android:exported="false"/>
+        <service
+            android:name="com.oacg.service.FileDownloadService"
+            android:exported="false"/>
+        <service
+            android:name="com.oacg.service.DownLoadIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="intentservice.action.ACTION_DOWNLOAD_SERVICE"/>
             </intent-filter>
         </service>
+        <service
+            android:name="com.oacg.service.DownloadNotificationService"
+            android:exported="false"/>
 
-        <service android:name="com.oacg.service.DownloadNotificationService" android:exported="false"></service>
-        <receiver android:name="com.oacg.service.AppInstallReceiver" android:exported="false">
+        <receiver
+            android:name="com.oacg.service.AppInstallReceiver"
+            android:exported="false">
             <intent-filter android:priority="2147483647">
-                <action android:name="com.oacg.receiver.ACTION_DOWNLOAD_INSTALL"></action>
+                <action android:name="com.oacg.receiver.ACTION_DOWNLOAD_INSTALL"/>
             </intent-filter>
         </receiver>
-        <receiver android:name="com.oacg.service.AppInstallCompleteReceiver" android:exported="false">
+        <receiver
+            android:name="com.oacg.service.AppInstallCompleteReceiver"
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+
+                <data android:scheme="package"/>
             </intent-filter>
         </receiver>
 
+        <activity android:name=".demo.PictureUi">
+        </activity>
+        <activity android:name=".demo.FragmentScrollerDemo">
+        </activity>
     </application>
 
 </manifest>

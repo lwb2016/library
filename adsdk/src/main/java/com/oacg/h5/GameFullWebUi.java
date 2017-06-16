@@ -17,12 +17,12 @@ import com.oacg.service.DownLoadIntentService;
 
 public class GameFullWebUi extends FullWebUi {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         registerReceiver();
     }
+
     private void registerReceiver()
     {
         mDownloadReceiver=new DownloadReceiver();
@@ -51,7 +51,7 @@ public class GameFullWebUi extends FullWebUi {
 		initDownloadView();
 	}
 
-    protected void startDownload(String url, long contentLength) {
+    public void startDownload(String url, long contentLength) {
         Log.i("GAME_TEST", "startDownload:"+url);
         //DownLoadIntentService.startDownload(mContext,url);
         AdHandler.startDownload(mContext,url,contentLength);
@@ -90,7 +90,6 @@ public class GameFullWebUi extends FullWebUi {
             }
         }
     }
-
 
     private Handler mHandler=new Handler(){
         @Override

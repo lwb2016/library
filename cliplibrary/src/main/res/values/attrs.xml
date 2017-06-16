@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClipHorizontalScrollView">
+        <attr name="auto_expend_gap" format="dimension"></attr>
+        <attr name="auto_expend_enable" format="boolean"></attr>
+    </declare-styleable>
+</resources>

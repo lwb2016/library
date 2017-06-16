@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import java.io.File;
 
-import east2d.com.tool.KEncryption;
+import top.libbase.tool.KEncryption;
 
 /**
  * apk应用下载服务

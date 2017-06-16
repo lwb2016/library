@@ -34,7 +34,7 @@ public class GameTitleWebUi extends GameFullWebUi {
     }
 
     @Override
-    protected void onReceiveTitle(String title) {
+    public void onReceiveTitle(String title) {
         super.onReceiveTitle(title);
         tv_title.setText(title);
     }

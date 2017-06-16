@@ -2,7 +2,7 @@ package com.oacg.service;
 
 import android.content.Context;
 
-import east2d.com.tool.KEncryption;
+import top.libbase.tool.KEncryption;
 
 /**
  * 下载文件服务

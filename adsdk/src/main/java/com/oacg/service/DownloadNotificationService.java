@@ -15,7 +15,7 @@ import android.util.Log;
 import java.util.HashMap;
 import java.util.Map;
 
-import east2d.com.tool.ResUtils;
+import top.libbase.tool.ResUtils;
 
 /**
  * Created by leo on 2017/6/6.

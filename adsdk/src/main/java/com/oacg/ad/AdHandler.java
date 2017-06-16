@@ -8,18 +8,14 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.oacg.adbase.Constants;
-import com.oacg.download.listener.DownloadListener;
-import com.oacg.h5.FullWebUi;
 import com.oacg.h5.GameFullWebUi;
 import com.oacg.h5.GameTitleWebUi;
-import com.oacg.h5.TitleWebUi;
-import com.oacg.service.ApkDownloadService;
 import com.oacg.service.DownLoadIntentService;
-import com.oacg.service.FileDownloadService;
 
-import east2d.com.tool.PermissionUtil;
-import east2d.com.ui.handler.BaseUiHandler;
-import east2d.com.ui.handler.SystemUiHandler;
+import top.libbase.tool.PermissionUtil;
+import top.libbase.ui.handler.BaseUiHandler;
+import top.libbase.ui.handler.SystemUiHandler;
+
 
 /**
  * 广告的事件响应器

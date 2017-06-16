@@ -96,7 +96,7 @@ public class ViewPagerUi extends Activity {
             return;
         }
         isLoading=true;
-        AdSDK.get().getAdModule().reqAdData(type, new AdDataLoadingListener<AdData>() {
+        AdSDK.get().getAdModule().reqAdData(type,false, new AdDataLoadingListener<AdData>() {
             @Override
             public void onError(int code, final Object error) {
                 isLoading=false;

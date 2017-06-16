@@ -4,6 +4,7 @@ import android.app.LauncherActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -29,7 +30,6 @@ public class MainUi extends LauncherActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         List<String> datas = getDatas();
 
         mIntentList=getIntents();
@@ -38,6 +38,11 @@ public class MainUi extends LauncherActivity{
 
         notificationIntent = new Intent(this, DownloadNotificationService.class);
         startService(notificationIntent);
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
     }
 
     @Override
@@ -74,6 +79,8 @@ public class MainUi extends LauncherActivity{
         list.add("listview侧滑滚动测试");//13
         list.add("gridview侧滑滚动测试");//14
         list.add("viewpager测试");//15
+        list.add("系统图片选择测试");//16
+        list.add("viewpager滑动冲突测试");//17
         return list;
     }
 
@@ -106,6 +113,8 @@ public class MainUi extends LauncherActivity{
         intents.add(new Intent(this,ClipDemo3.class));//14
         intents.add(new Intent(this,ClipGridDemo3.class));//15
         intents.add(new Intent(this,ViewPagerUi.class));//15
+        intents.add(new Intent(this,PictureUi.class));//16
+        intents.add(new Intent(this,FragmentScrollerDemo.class));//17
 
         return intents;
     }

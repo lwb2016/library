@@ -2,7 +2,7 @@ package com.oacg.ad;
 
 import com.oacg.networkrequest.CacheInterceptor;
 
-import east2d.com.tool.NetworkUtil;
+import top.libbase.tool.NetworkUtil;
 
 /**
  * 广告请求缓存拦截器

@@ -8,10 +8,16 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import com.oacg.adbase.Constants;
+import com.oacg.chromeweb.BaseWebClient;
+import com.oacg.chromeweb.x5web.X5WebViewClient;
+import com.tencent.smtt.sdk.WebView;
 
-import east2d.com.tool.ResUtils;
+import top.libbase.tool.ResUtils;
+import top.libbase.ui.activity.BaseActivity;
 
-public class FullWebUi extends BaseX5WebUi {
+public class FullWebUi extends BaseActivity implements BaseWebClient.WebClientListener {
+
+	protected BaseWebClient<WebView> mBaseWebClient;
 
     FrameLayout mRootView;
     ProgressBar mPbLoading;
@@ -65,48 +71,56 @@ public class FullWebUi extends BaseX5WebUi {
 				reloadWeb();
 			}
 		});
-        newWebView(mRootView);
+		mBaseWebClient=new X5WebViewClient(mContext,mRootView);
+		mBaseWebClient.setClientListener(this);
+		mBaseWebClient.onCreate();
 	}
 
 	private void loadWeb(){
-        if(mWebView!=null&&!TextUtils.isEmpty(url)){
-            mWebView.loadUrl(url);
+        if(mBaseWebClient.getWebView()!=null&&!TextUtils.isEmpty(url)){
+			mBaseWebClient.getWebView().loadUrl(url);
         }
     }
 	
 	private void reloadWeb(){
-		if(mWebView!=null){
-			mWebView.reload();
+		if(mBaseWebClient.getWebView()!=null){
+			mBaseWebClient.getWebView().reload();
 		}
 	}
 	
 	@Override
-	protected void onLoadingStart() {
+	public void onLoadingStart() {
 		// TODO Auto-generated method stub
-		super.onLoadingStart();
 		error_view.setVisibility(View.GONE);
 		mPbLoading.setVisibility(View.VISIBLE);
 	}
 	
 	@Override
-	protected void onLoadingSuccess() {
+	public void onLoadingSuccess() {
 		// TODO Auto-generated method stub
-		super.onLoadingSuccess();
 		mPbLoading.setVisibility(View.GONE);
 	}
 	
 	@Override
-	protected void onLoadingError() {
+	public void onLoadingError() {
 		// TODO Auto-generated method stub
-		super.onLoadingError();
 		error_view.setVisibility(View.VISIBLE);
 	}
-	
+
 	@Override
-	protected void onProgressChange(int newProgress) {
+	public void onReceiveTitle(String s) {
+
+	}
+
+	@Override
+	public void onProgressChange(int newProgress) {
 		// TODO Auto-generated method stub
-		super.onProgressChange(newProgress);
 		mPbLoading.setProgress(newProgress);
+	}
+
+	@Override
+	public void startDownload(String s, long l) {
+
 	}
 
 	protected int getLayout(String name){
@@ -115,5 +129,21 @@ public class FullWebUi extends BaseX5WebUi {
 
 	protected int getId(String name){
 		return ResUtils.getId(name,this);
+	}
+
+
+	@Override
+	public void onBackPressed() {
+		if(mBaseWebClient.getWebView()!=null&&mBaseWebClient.getWebView().canGoBack()){
+			mBaseWebClient.getWebView().goBack();
+			return;
+		}
+		super.onBackPressed();
+	}
+
+	@Override
+	protected void onDestroy() {
+		mBaseWebClient.onDestroy();
+		super.onDestroy();
 	}
 }

@@ -22,7 +22,7 @@ public class SplashAdViewModule extends BaseAdViewModule {
                 listener.onError();
             }
         }
-        AdSDK.get().getAdModule().reqAdData(group_id, new AdDataLoadingListener<AdData>() {
+        AdSDK.get().getAdModule().reqAdData(group_id,true, new AdDataLoadingListener<AdData>() {
             @Override
             public void onError(int code, final Object error) {
                 if(mAdView!=null){

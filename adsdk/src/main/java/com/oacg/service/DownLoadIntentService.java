@@ -9,9 +9,9 @@ import android.text.TextUtils;
 
 import java.io.File;
 
-import east2d.com.download.FileDownloader;
-import east2d.com.tool.KEncryption;
-import east2d.com.tool.LogU;
+import top.libbase.download.FileDownloader;
+import top.libbase.tool.KEncryption;
+import top.libbase.tool.LogU;
 
 /**
  * 系统的下载服务

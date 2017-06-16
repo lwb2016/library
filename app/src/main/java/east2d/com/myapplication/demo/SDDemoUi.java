@@ -14,18 +14,13 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.oacg.download.data.StorageData;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import east2d.com.download.FileDownloader;
+import east2d.com.file.StorageData;
 import east2d.com.myapplication.R;
 import east2d.com.tool.KEncryption;
-import east2d.com.tool.LogU;
 import east2d.com.ui.adapter.LVBaseAdapter;
 
 /**

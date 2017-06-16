@@ -3,12 +3,11 @@ package com.oacg.ad;
 
 import com.oacg.networkrequest.IRequestCallBack;
 import com.oacg.networkrequest.OkHttpRequest;
-import java.io.File;
+
 import java.util.concurrent.TimeUnit;
 
-import east2d.com.tool.SPUtils;
-import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import top.libbase.tool.SPUtils;
 
 /**
  * Ad数据请求模块
@@ -23,7 +22,7 @@ public class AdModule {
 
     private static AdModule sAdModule;
 
-    static AdModule getModule(){
+    public static AdModule getModule(){
         if(sAdModule==null){
             synchronized (AdModule.class) {
                 if(sAdModule==null){
@@ -35,14 +34,14 @@ public class AdModule {
     }
 
     private AdModule() {
-        File cacheFile = new File(AdSDK.get().getContext().getCacheDir(), "ad_reqcache");
-        Cache cache = new Cache(cacheFile, 1024 * 1024 * 8);
+        //File cacheFile = new File(AdSDK.get().getContext().getCacheDir(), "ad_reqcache");
+        //Cache cache = new Cache(cacheFile, 1024 * 1024 * 8);
 
         OkHttpClient client=new OkHttpClient.Builder()
-                .cache(cache)
+                //.cache(cache)
                 .connectTimeout(3, TimeUnit.SECONDS)
-                .addInterceptor(new AdCacheInterceptor())
-                .addNetworkInterceptor(new AdCacheInterceptor())
+                //.addInterceptor(new AdCacheInterceptor())
+                //.addNetworkInterceptor(new AdCacheInterceptor())
                 .build();
 
         mHttpRequest=new OkHttpRequest();
@@ -56,14 +55,15 @@ public class AdModule {
      * @param group_id
      * @param listener
      */
-    public void reqAdData(final int group_id, final AdDataLoadingListener<AdData> listener){
+    public void reqAdData(final int group_id,final boolean loadFromLocal, final AdDataLoadingListener<AdData> listener){
         mHttpRequest.asyncReqHttpData(AdHttp.getAdDataUrl(group_id), null, OkHttpRequest.GET, new IRequestCallBack() {
             @Override
             public void onOK(int code, String response) {
                 if(listener!=null){
                     CbAdData cbAdData = CbAdData.parseJsonData(response);
                     if(cbAdData==null||cbAdData.getAd_data()==null||cbAdData.getAd_data().isEmpty()){
-                    	ansisysData(cbAdData, group_id, listener);
+                    	ansisysData(cbAdData,loadFromLocal, group_id, listener);
+                        //listener.onError(-1,"no ad data");
                     }else{
                     	saveData(response,group_id);
                         listener.onComplete(cbAdData.getDataList(),cbAdData.getInterval());
@@ -74,13 +74,14 @@ public class AdModule {
             @Override
             public void onError(int code, String msg) {
                 if(listener!=null)
-                	ansisysData(null, group_id, listener);
+                	ansisysData(null,loadFromLocal, group_id, listener);
+                    //listener.onError(code,msg);
             }
         });
     }
     
-   private void ansisysData(CbAdData cbAdData,int group_id,AdDataLoadingListener<AdData> listener){
-	   if(cbAdData==null){
+   private void ansisysData(CbAdData cbAdData, boolean loadFromLocal, int group_id, AdDataLoadingListener<AdData> listener){
+	   if(cbAdData==null&&loadFromLocal){
 		   cbAdData=getDataFromLocal(group_id);
 	   }
 	   if(cbAdData==null||cbAdData.getAd_data()==null||cbAdData.getAd_data().isEmpty()){

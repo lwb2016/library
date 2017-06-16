@@ -24,7 +24,7 @@ public class PlugAdViewModule extends BaseAdViewModule {
                 listener.onError();
             }
         }
-        AdSDK.get().getAdModule().reqAdData(group_id, new AdDataLoadingListener<AdData>() {
+        AdSDK.get().getAdModule().reqAdData(group_id,false, new AdDataLoadingListener<AdData>() {
             @Override
             public void onError(int code, final Object error) {
                 if(mAdView!=null){

@@ -6,11 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.oacg.adapter.RVBaseAdapter;
-
 import java.util.List;
 
 import east2d.com.myapplication.R;
+import east2d.com.ui.adapter.RVBaseAdapter;
 
 /**
  * Created by leo on 2017/4/27.
